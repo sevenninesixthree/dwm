@@ -1,3 +1,5 @@
+*.o
+dwm
 *.zst
 pkg/*
 src/*

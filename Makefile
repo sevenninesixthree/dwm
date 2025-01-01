@@ -42,4 +42,7 @@ uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
 		${DESTDIR}${MANPREFIX}/man1/dwm.1
 
-.PHONY: all clean dist install uninstall
+dpack:
+	rm *.zst
+
+.PHONY: all clean dist install uninstall dpack
