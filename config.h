@@ -56,7 +56,7 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "瓷",      tile },    /* first entry is default */
 	{ "浮",      NULL },    /* no layout function means floating behavior */
-	{ "[铺]",      monocle },
+	{ "铺",      monocle },
 };
 
 /* key definitions */

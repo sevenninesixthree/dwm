@@ -1136,19 +1136,24 @@ maprequest(XEvent *e)
 		manage(ev->window, &wa);
 }
 
+const char ChineseNum[][4]={"零","一","二","三","四","五","六","七","八","九","多"};
 void
 monocle(Monitor *m)
 {
 	unsigned int n = 0;
 	Client *c;
 
-	for (c = m->clients; c; c = c->next)
-		if (ISVISIBLE(c))
-			n++;
-	if (n > 0) /* override layout symbol */
-		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n);
-	for (c = nexttiled(m->clients); c; c = nexttiled(c->next))
-		resize(c, m->wx, m->wy, m->ww - 2 * c->bw, m->wh - 2 * c->bw, 0);
+  for (c = m->clients; c; c = c->next)
+    if (ISVISIBLE(c))
+      n++;
+  if (n > 0){
+    if (n <= 10)
+      snprintf(m->ltsymbol, sizeof m->ltsymbol, "%s", ChineseNum[n]);
+    else
+      snprintf(m->ltsymbol, sizeof m->ltsymbol, "%s", ChineseNum[10]);
+  }
+  for (c = nexttiled(m->clients); c; c = nexttiled(c->next))
+    resize(c, m->wx, m->wy, m->ww - 2 * c->bw, m->wh - 2 * c->bw, 0);
 }
 
 void
